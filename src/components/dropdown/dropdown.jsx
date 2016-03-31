@@ -1,7 +1,9 @@
 import React from 'react';
 import PureComponent from 'react-pure-render/component';
 import classNames from 'classnames';
+// import reactOutsideEvent from 'react-outside-event';
 import Icon from '../icon/icon';
+import variables from '../../utilities/variables';
 import './dropdown.scss';
 
 class Dropdown extends PureComponent {
@@ -20,6 +22,13 @@ class Dropdown extends PureComponent {
       actionsOpen: !this.state.actionsOpen,
     });
   }
+
+  // onOutsideEvent(event) {
+  //   console.log(event, 'hello');
+  //   this.setState({
+  //     actionsOpen: false,
+  //   });
+  // }
 
   renderActions() {
     const style = {
@@ -44,7 +53,11 @@ class Dropdown extends PureComponent {
       <div className={ classes }>
         <button className="dropdown__toggle" onClick={ this.handleToggleClick }>
           { this.props.toggle }
-          <Icon className="dropdown__toggle-icon" type={ this.state.actionsOpen ? 'arrowUp' : 'arrowDown' } />
+          <Icon
+            className="dropdown__toggle-icon"
+            stroke={ variables.colorPrimary }
+            type={ this.state.actionsOpen ? 'chevronUp' : 'chevronDown' }
+          />
         </button>
         { this.renderActions() }
       </div>
